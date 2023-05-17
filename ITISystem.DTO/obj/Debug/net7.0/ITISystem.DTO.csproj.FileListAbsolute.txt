@@ -1,0 +1,15 @@
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\bin\Debug\net7.0\ITISystem.DTO.deps.json
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\bin\Debug\net7.0\ITISystem.DTO.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\bin\Debug\net7.0\ITISystem.DTO.pdb
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.csproj.AssemblyReference.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.AssemblyInfoInputs.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.AssemblyInfo.cs
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.csproj.CoreCompileInputs.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\refint\ITISystem.DTO.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.pdb
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ref\ITISystem.DTO.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\bin\Debug\net7.0\ITISystem.DAL.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\bin\Debug\net7.0\ITISystem.DAL.pdb
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DTO\obj\Debug\net7.0\ITISystem.DTO.csproj.CopyComplete

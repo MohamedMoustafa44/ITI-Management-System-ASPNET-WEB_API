@@ -1,0 +1,14 @@
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\bin\Debug\net7.0\ITISystem.DAL.deps.json
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\bin\Debug\net7.0\ITISystem.DAL.runtimeconfig.json
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\bin\Debug\net7.0\ITISystem.DAL.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\bin\Debug\net7.0\ITISystem.DAL.pdb
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.csproj.AssemblyReference.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.AssemblyInfoInputs.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.AssemblyInfo.cs
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.csproj.CoreCompileInputs.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\refint\ITISystem.DAL.dll
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.pdb
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ITISystem.DAL.genruntimeconfig.cache
+D:\Career\ITI\Graduation project\ITISystem\ITISystem.DAL\obj\Debug\net7.0\ref\ITISystem.DAL.dll
