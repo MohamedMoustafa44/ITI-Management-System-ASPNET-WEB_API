@@ -5,11 +5,25 @@
 namespace ITISystem.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class ContinueAfterDroppingDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Courses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalHours = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Courses", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Instructors",
                 columns: table => new
@@ -24,26 +38,6 @@ namespace ITISystem.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Instructors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Courses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotalHours = table.Column<int>(type: "int", nullable: false),
-                    InstructorId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Courses_Instructors_InstructorId",
-                        column: x => x.InstructorId,
-                        principalTable: "Instructors",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -97,7 +91,7 @@ namespace ITISystem.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartmentId = table.Column<int>(type: "int", nullable: true),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -110,6 +104,36 @@ namespace ITISystem.DAL.Migrations
                         name: "FK_Students_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Instructor_Course",
+                columns: table => new
+                {
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    InstructorId = table.Column<int>(type: "int", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    Rate = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Instructor_Course", x => new { x.StudentId, x.InstructorId, x.CourseId });
+                    table.ForeignKey(
+                        name: "FK_Instructor_Course_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Instructor_Course_Instructors_InstructorId",
+                        column: x => x.InstructorId,
+                        principalTable: "Instructors",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Instructor_Course_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
                         principalColumn: "Id");
                 });
 
@@ -144,15 +168,20 @@ namespace ITISystem.DAL.Migrations
                 column: "DepartmentsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_InstructorId",
-                table: "Courses",
-                column: "InstructorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Departments_SupervisorId",
                 table: "Departments",
                 column: "SupervisorId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Instructor_Course_CourseId",
+                table: "Instructor_Course",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Instructor_Course_InstructorId",
+                table: "Instructor_Course",
+                column: "InstructorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_DepartmentId",
@@ -170,6 +199,9 @@ namespace ITISystem.DAL.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CourseDepartment");
+
+            migrationBuilder.DropTable(
+                name: "Instructor_Course");
 
             migrationBuilder.DropTable(
                 name: "Students_Courses");

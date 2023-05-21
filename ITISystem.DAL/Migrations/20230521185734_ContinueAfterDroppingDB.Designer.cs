@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ITISystem.DAL.Migrations
 {
     [DbContext(typeof(ITIDbContext))]
-    [Migration("20230517121148_UpdateInstructorAndCourseRelationship")]
-    partial class UpdateInstructorAndCourseRelationship
+    [Migration("20230521185734_ContinueAfterDroppingDB")]
+    partial class ContinueAfterDroppingDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,21 +37,6 @@ namespace ITISystem.DAL.Migrations
                     b.HasIndex("DepartmentsId");
 
                     b.ToTable("CourseDepartment");
-                });
-
-            modelBuilder.Entity("CourseInstructor", b =>
-                {
-                    b.Property<int>("CoursesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InstructorsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CoursesId", "InstructorsId");
-
-                    b.HasIndex("InstructorsId");
-
-                    b.ToTable("CourseInstructor");
                 });
 
             modelBuilder.Entity("ITISystem.DAL.Course", b =>
@@ -128,6 +113,32 @@ namespace ITISystem.DAL.Migrations
                     b.ToTable("Instructors");
                 });
 
+            modelBuilder.Entity("ITISystem.DAL.Instructor_Course", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(2);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(3);
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId", "InstructorId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("InstructorId");
+
+                    b.ToTable("Instructor_Course");
+                });
+
             modelBuilder.Entity("ITISystem.DAL.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -196,21 +207,6 @@ namespace ITISystem.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CourseInstructor", b =>
-                {
-                    b.HasOne("ITISystem.DAL.Course", null)
-                        .WithMany()
-                        .HasForeignKey("CoursesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ITISystem.DAL.Instructor", null)
-                        .WithMany()
-                        .HasForeignKey("InstructorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ITISystem.DAL.Department", b =>
                 {
                     b.HasOne("ITISystem.DAL.Instructor", "Supervisor")
@@ -220,6 +216,30 @@ namespace ITISystem.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Supervisor");
+                });
+
+            modelBuilder.Entity("ITISystem.DAL.Instructor_Course", b =>
+                {
+                    b.HasOne("ITISystem.DAL.Course", "Course")
+                        .WithMany("Instructors_Courses")
+                        .HasForeignKey("CourseId")
+                        .IsRequired();
+
+                    b.HasOne("ITISystem.DAL.Instructor", "Instructor")
+                        .WithMany("Instructors_Courses")
+                        .HasForeignKey("InstructorId")
+                        .IsRequired();
+
+                    b.HasOne("ITISystem.DAL.Student", "Student")
+                        .WithMany("Instructors_Courses")
+                        .HasForeignKey("StudentId")
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ITISystem.DAL.Student", b =>
@@ -254,6 +274,8 @@ namespace ITISystem.DAL.Migrations
 
             modelBuilder.Entity("ITISystem.DAL.Course", b =>
                 {
+                    b.Navigation("Instructors_Courses");
+
                     b.Navigation("Students_Courses");
                 });
 
@@ -265,10 +287,14 @@ namespace ITISystem.DAL.Migrations
             modelBuilder.Entity("ITISystem.DAL.Instructor", b =>
                 {
                     b.Navigation("Department");
+
+                    b.Navigation("Instructors_Courses");
                 });
 
             modelBuilder.Entity("ITISystem.DAL.Student", b =>
                 {
+                    b.Navigation("Instructors_Courses");
+
                     b.Navigation("Students_Courses");
                 });
 #pragma warning restore 612, 618

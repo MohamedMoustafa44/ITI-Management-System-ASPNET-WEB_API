@@ -5,16 +5,19 @@ namespace ITISystem.DAL;
 
 public class Instructor_Course
 {
-    [Column(Order = 0)]
+    [Column(Order = 1)]
+    public int StudentId { get; set; }
+
+    [Column(Order = 2)]
     public int InstructorId { get; set; }
 
-    [Column(Order = 1)]
+    [Column(Order = 3)]
     public int CourseId { get;set; }
 
-    [ForeignKey("InstructorId")]
+    public Student? Student { get; set; }
+
     public Instructor? Instructor { get; set;}
 
-    [ForeignKey("CourseId")]
     public Course? Course { get; set; }
 
     [Range(0, 5, ErrorMessage = "Rate out of range (1:5)")]

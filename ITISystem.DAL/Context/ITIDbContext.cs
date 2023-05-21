@@ -22,6 +22,24 @@ public class ITIDbContext:DbContext
 
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Instructor_Course>()
-            .HasKey(c => new { c.InstructorId, c.CourseId });
+            .HasKey(c => new { c.StudentId, c.InstructorId, c.CourseId });
+
+        modelBuilder.Entity<Instructor_Course>()
+            .HasOne(student => student.Student)
+            .WithMany(inst_crs => inst_crs.Instructors_Courses)
+            .HasForeignKey(std => std.StudentId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
+
+        modelBuilder.Entity<Instructor_Course>()
+            .HasOne(instructor => instructor.Instructor)
+            .WithMany(inst_crs => inst_crs.Instructors_Courses)
+            .HasForeignKey(inst => inst.InstructorId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
+
+        modelBuilder.Entity<Instructor_Course>()
+            .HasOne(course => course.Course)
+            .WithMany(inst_crs => inst_crs.Instructors_Courses)
+            .HasForeignKey(crs => crs.CourseId)
+            .OnDelete(DeleteBehavior.ClientSetNull);
     }
 }

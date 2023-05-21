@@ -34,6 +34,7 @@ namespace ITISystem.API
             builder.Services.AddScoped<IInstructorRepo, InstructorRepo>();
             builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
             builder.Services.AddScoped<ICourseRepo, CourseRepo>();
+            builder.Services.AddScoped<IInstructor_CourseRepo, Instructor_CourseRepo>();
             #endregion
 
             #region Managers
@@ -41,6 +42,7 @@ namespace ITISystem.API
             builder.Services.AddScoped<IInstructorManager, InstructorManager>();
             builder.Services.AddScoped<IDepartmentManager, DepartmentManager>();
             builder.Services.AddScoped<ICourseManager, CourseManager>();
+            builder.Services.AddScoped<IInstructor_CourseManager, Instructor_CourseManager>();
             #endregion
 
             var app = builder.Build();
